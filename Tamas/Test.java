@@ -2,6 +2,7 @@ package Tamas;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.Color;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -17,19 +18,16 @@ public class Test {
     }
 
     public static void drawSomething(int x, int y ,int size, Graphics graphics) {
-        int step = size / 14;
-
-
-        graphics.setColor(Color.red);
-        graphics.drawLine(size, y, x, y + size);
-
-        graphics.setColor(new Color((int) (Math.random() * 256), (int) (Math.random() * 256), (int) (Math.random() * 256)));
-        graphics.fillRect((int) (Math.random() * (WIDTH - size)), (int) (Math.random() * (HEIGHT - size)), size, size);
-
-        graphics.setColor(Color.green);
-        graphics.drawOval(x, y, size, size);
-
-
+        int x1 = 0;
+        int y1 = 0;
+        int x2 = 0;
+        int y2 = 320;
+        graphics.setColor(Color.GREEN);
+        for (int i = 0; i < 32; i++) {
+            graphics.drawLine(x1, y1, x2, y2);
+            y1 += 10;
+            x2 += 10;
+        }
     }
 
     // ezt a részt nem kell módosítani
@@ -47,6 +45,9 @@ public class Test {
         jFrame.pack();
     }
 
+
+
+    
     static class ImagePanel extends JPanel {
         @Override
         protected void paintComponent(Graphics graphics) {
