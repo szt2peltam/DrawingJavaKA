@@ -8,3 +8,10 @@
 5. git add *
 6. git commit -m "commit üzenet"
 7. git push --set-upstream origin BranchNeve
+
+
+Branch hidrálás:
+
+git pull ---> nem lesz jó
+
+git pull origin main --> jó lesz
