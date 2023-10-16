@@ -15,3 +15,6 @@ Branch hidrálás:
 git pull ---> nem lesz jó
 
 git pull origin main --> jó lesz
+
+
+![alt text](https://github.com/szt2peltam/DrawingJavaKA/blob/main/Josef/logo.png)
