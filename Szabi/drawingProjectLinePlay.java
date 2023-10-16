@@ -1,4 +1,4 @@
-package Rajzolos;
+package Szabi;
 
 import java.awt.Color;
 import java.awt.Graphics;
