@@ -18,11 +18,11 @@ public class fractalCircles {
     }
 
     public static void drawSomething(int x, int y ,int size, Graphics graphics) {
-        int width = 300;
-        int height = 300;
+        int width = 900;
+        int height = 900;
         int radius = height / 2;
         Point2D p1 = new Point((900/2)-radius, (900/2)-radius);
-        DrawCircles(graphics, p1, width, height,radius,2);
+        DrawCircles(graphics, p1, width, height,radius,4);
     } 
 
 
@@ -33,19 +33,20 @@ public class fractalCircles {
 
         }else{
             graphics.drawOval((int)p1.getX(),(int) p1.getY(), width, height);
-            Point2D topmid = new Point(450, 0);
-            Point2D bottomRight = new Point(0, 900);
+            Point2D topmid = new Point((int)p1.getX() + radius, 0);
+            Point2D bottomRight = new Point((int)p1.getX(), (int)p1.getY() + radius);
+            Point2D midRight = new Point((int)p1.getX()+(width), (int)p1.getY()+radius+10);
             // Point2D p2 = CenterPointOfNewCircle(p1, radius / 2 );
             Point2D p2 = MidPointOfASide(topmid,p1);
-            p2 = TranslatePointDown(p2, (int)p2.getY());
+            p2 = TranslatePointUp(p2, (int)p2.getY());
             // p2 = MidPointOfASide()
             Point2D p3 = MidPointOfASide(bottomRight,p1);
-            p3 = TranslatePointRightUp(p3, (int)p3.getX());
-            Point2D p4 = CenterPointOfNewCircle(p1, radius / 2 );
-            p4 = TranslatePointRight(p4, radius);
+            // p3 = TranslatePointDown(p3, (int)p3.getY());
+            Point2D p4 = MidPointOfASide(midRight, p1);
+            // p4 = TranslatePointRight(p4, radius);
             DrawCircles(graphics, p2, radius, radius,radius / 2, depth - 1);
             DrawCircles(graphics, p3, radius, radius,radius / 2, depth - 1);
-            // DrawCircles(graphics, p4, radius, radius,radius / 2,depth-1);
+            DrawCircles(graphics, p4, radius, radius,radius / 2,depth-1);
 
         }
         
@@ -54,14 +55,11 @@ public class fractalCircles {
     public static Point2D  CenterPointOfNewCircle(Point2D p1,int radius){
         return new Point(450 - radius, 450-radius);
     }
-    public static Point2D TranslatePointDown(Point2D p1, int radius){
+    public static Point2D TranslatePointUp(Point2D p1, int radius){
         return new Point((int)(p1.getX()) ,(int) (p1.getY() + radius));
     }
-    public static Point2D TranslatePointRightUp(Point2D p1, int radius){
-        return new Point((int)(p1.getX()+radius) ,(int) ((p1.getY()-radius)));
-    }
-    public static Point2D TranslatePointRight(Point2D p1, int radius){
-        return new Point((int)(p1.getX()+radius/2) ,(int) ((p1.getY())));
+    public static Point2D TranslatePointDown(Point2D p1, int radius){
+        return new Point((int)(p1.getX()) ,(int) (p1.getY() - radius));
     }
 
     public static Point2D ThirdOfASide(Point2D p1, Point2D p2){
